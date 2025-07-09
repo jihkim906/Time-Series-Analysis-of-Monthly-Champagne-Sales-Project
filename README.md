@@ -12,13 +12,13 @@ The goal of this project is to develop a suitable time series model that can pro
 
 ### Initial Analysis
 
-![Figure 1: Monthly Champagne Sales (1964–1972)](path_to_image1.png)
+![Figure 1: Monthly Champagne Sales (1964–1972)](figures/new_initial_plot.png)
 
 The time series plot of monthly Champagne sales from 1964 to 1972 shows a strong and repeating seasonal pattern, with sharp peaks occurring approximately every 12 months. In addition to the seasonality, there is a slight upward linear trend in overall sales over time. When both trend and seasonality are present, it is appropriate to first apply a seasonal difference (with lag 12 for monthly data) to remove the seasonal component. After this transformation, we can re-evaluate the series to determine whether a first (non-seasonal) difference is also needed to address the remaining trend and achieve stationarity.
 
 ### Differencing
 
-![Figure 2: Seasonally Differenced Monthly Champagne Sales (1964–1972)](path_to_image2.png)
+![Figure 2: Seasonally Differenced Monthly Champagne Sales (1964–1972)](figures/new_seasonaldiff_plot.png)
 
 After applying a seasonal difference of lag 12 to the monthly Champagne sales data, the resulting time series shows that the seasonality has been effectively removed. The sharp, repeating annual spikes present in the original series are no longer visible. Additionally, the slight upward linear trend observed earlier is no longer apparent in the seasonally differenced series, suggesting that the data may now be sufficiently stationary.
 
@@ -30,7 +30,7 @@ To statistically confirm whether the seasonally differenced series is stationary
 
 ### ACF and PACF Analysis
 
-![Figure 3: ACF and PACF plots of the seasonally differenced series.](path_to_image3.png)
+![Figure 3: ACF and PACF plots of the seasonally differenced series.](figures/acfpacfmodel1.png)
 
 From the ACF of the seasonally differenced series, we observe:
 
@@ -54,7 +54,7 @@ Based on this initial inspection, we tentatively specify a model with ARIMA(0, 0
 
 Model 1 Equation: Yₜ = 0.0985 + 24.2475Yₜ₋₁₂ + εₜ.
 
-![Figure 4: Residual analysis plots of ARIMA(0,0,0) × (1,1,0)12](path_to_image4.png)
+![Figure 4: Residual analysis plots of ARIMA(0,0,0) × (1,1,0)12](figures/model1analysis.png)
 
 - **Standardized Residuals:** The residual plot shows no obvious patterns or trends, suggesting that the residuals behave like white noise.
 - **ACF of Residuals:** Aside from a slight spike at one early lag, most autocorrelations lie well within the confidence bounds, indicating that the residuals are largely uncorrelated.
@@ -67,7 +67,7 @@ Overall, the residual analysis supports the adequacy of the current model’s as
 
 Model 2 Equation: Yₜ = 6.1473 + 0.8982Yₜ₋₁₂ + εₜ + 0.2590 εₜ₋₁.
 
-![Figure 5: Residual analysis plots of ARIMA(0,0,1) × (1,1,0)12](path_to_image5.png)
+![Figure 5: Residual analysis plots of ARIMA(0,0,1) × (1,1,0)12](figures/model2analysis.png)
 
 - **Standardized Residuals:** There are no obvious patterns or trends, suggesting the residuals resemble white noise.
 - **ACF of Residuals:** Apart from a minor spike around lag 12, all autocorrelations lie well within the confidence bounds, indicating little to no autocorrelation.
@@ -78,7 +78,7 @@ Given these results, the residuals appear to satisfy the key assumptions. Theref
 
 ## Results
 
-![Figure 6: 24 Months Forecast of Monthly Champagne Sales using ARIMA(0, 0, 1)×(1, 1, 0)12](path_to_image6.png)
+![Figure 6: 24 Months Forecast of Monthly Champagne Sales using ARIMA(0, 0, 1)×(1, 1, 0)12](figures/new_forecast.png)
 
 ### Effectiveness of the Forecast
 
