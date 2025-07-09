@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this project is to apply the time series analysis methods learned in STATS 4A03 to model and forecast monthly Champagne sales for the Perrin Freres label in France. The dataset, originally credited to Makridakis and Wheelwright (1989), provides monthly observations of Champagne sales from January 1964 through September 1972, yielding a total of 105 data points. Each observation represents sales in millions.
+The purpose of this project is to apply the time series analysis methods to model and forecast monthly Champagne sales for the Perrin Freres label in France. The dataset, originally credited to Makridakis and Wheelwright (1989), provides monthly observations of Champagne sales from January 1964 through September 1972, yielding a total of 105 data points. Each observation represents sales in millions.
 
 Understanding historical sales behavior is vital in the wine and spirits industry, where factors such as seasonal festivities, marketing campaigns, consumer preferences, and broader economic influences can all affect demand. By identifying these patterns in the data, producers and distributors can plan more effectively for inventory, resource allocation, and strategic marketing. Such data-driven decision making helps optimize profits and reduce waste by aligning production with actual demand.
 
@@ -52,7 +52,7 @@ Based on this initial inspection, we tentatively specify a model with ARIMA(0, 0
 
 #### Model 1: ARIMA(0,0,0) × (1,1,0)<sub>12</sub>
 
-Model 1 Equation: Yₜ = 0.0985 + 24.2475Yₜ₋₁₂ + εₜ.
+Model 1 Equation: Ysub>t</sub> = 0.0985 + 24.2475Y<sub>t-12</sub> + ε<sub>t-1</sub>.
 
 ![Figure 4: Residual analysis plots of ARIMA(0,0,0) × (1,1,0)12](figures/model1analysis.png)
 
@@ -65,7 +65,7 @@ Overall, the residual analysis supports the adequacy of the current model’s as
 
 #### Model 2: ARIMA(0,0,1) × (1,1,0)<sub>12</sub>
 
-Model 2 Equation: Yₜ = 6.1473 + 0.8982Yₜ₋₁₂ + εₜ + 0.2590 εₜ₋₁.
+Model 2 Equation: Y<sub>t</sub> = 6.1473 + 0.8982Y<sub>t-12</sub> + ε<sub>t</sub> + 0.2590 ε<sub>t-1</sub>.    
 
 ![Figure 5: Residual analysis plots of ARIMA(0,0,1) × (1,1,0)12](figures/model2analysis.png)
 
@@ -86,11 +86,11 @@ The forecast extends the series from October 1972 to September 1974, showing a c
 
 ### Contribution to the Project Goal
 
-The forecast allows producers and inventory managers to plan proactively for high-demand periods (e.g., December) and adjust for low-demand periods (e.g., January). From a marketing perspective, promotional efforts can be strategically timed to maximize impact. The model thus supports data-driven planning and reduces reliance on intuition.
+The forecast allows producers and inventory managers to plan proactively for high-demand periods (e.g., December) and adjust for low-demand periods (e.g., January). From a marketing perspective, promotional efforts can be strategically timed to maximize impact on consumer purchasing behavior and overall sales revenue. The model thus supports data-driven planning and reduces reliance on intuition.
 
 ## Conclusion
 
-While the final ARIMA(0,0,1) × (1,1,0)<sub>12</sub> model effectively captures the strong seasonal pattern, incorporating future data would help maintain alignment with evolving trends. Nevertheless, the model provides valuable insights for inventory, production, and marketing strategies. Periodic updates can ensure it remains an effective decision support tool in the Champagne industry.
+While the final ARIMA(0,0,1) × (1,1,0)<sub>12</sub> model effectively captures the strong seasonal pattern, incorporating future data would help maintain alignment with evolving trends and further improve forecast accuracy. Nevertheless, the model provides valuable insights for inventory, production, and marketing strategies. Periodic updates can ensure it remains an effective decision support tool in the Champagne industry.
 
 ## References
 
